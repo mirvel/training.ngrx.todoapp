@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './counter.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 
@@ -15,7 +17,8 @@ import { counterReducer } from './counter.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ count: counterReducer })
+    StoreModule.forRoot({ count: counterReducer }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
