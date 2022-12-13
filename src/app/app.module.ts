@@ -8,6 +8,7 @@ import { counterReducer } from './counter.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { itemReducer } from './item.reducer';
 import { LayoutComponent } from './layout/layout.component';
+import { NewTodoComponent } from './components/new-todo/new-todo.component';
 
 export const environment = {
   production: false,
@@ -15,7 +16,7 @@ export const environment = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent],
+  declarations: [AppComponent, LayoutComponent, NewTodoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
