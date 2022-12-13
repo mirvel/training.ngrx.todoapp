@@ -9,6 +9,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { itemReducer } from './item.reducer';
 import { LayoutComponent } from './layout/layout.component';
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { CommonModule } from '@angular/common';
 
 export const environment = {
   production: false,
@@ -16,9 +20,17 @@ export const environment = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent, NewTodoComponent],
+  declarations: [
+    AppComponent,
+    LayoutComponent,
+    NewTodoComponent,
+    HeaderComponent,
+    FooterComponent,
+    TodoListComponent,
+  ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     StoreModule.forRoot({ count: counterReducer, items: itemReducer }),
     environment.enableDevTools
