@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/internal/Observable';
 import { decrement, increment, reset } from './counter.actions';
+import { addItem, removeItem } from './item.actions';
 
 @Component({
   selector: 'app-root',
@@ -14,16 +15,25 @@ export class AppComponent {
   constructor(private store: Store<{ count: number }>) {
     this.count$ = store.select('count');
   }
- 
+
   increment() {
     this.store.dispatch(increment());
   }
- 
+
   decrement() {
     this.store.dispatch(decrement());
   }
- 
+
   reset() {
     this.store.dispatch(reset());
+  }
+  newId() {
+    return Math.floor(Math.random() * (300 - 200)) + 200;
+  }
+  addItem(val: string) {
+    this.store.dispatch(addItem({ item: { id: this.newId(), title: 'some data', completed: false } }));
+  }
+  removeItem(val: string) {
+    this.store.dispatch(removeItem({ id: parseInt(val) }));
   }
 }

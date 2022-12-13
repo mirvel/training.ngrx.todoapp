@@ -7,3 +7,8 @@
 <button (click)="decrement()">Decrement</button>
 
 <button (click)="reset()">Reset Counter</button>
+
+
+<input type="text" #inputValue>
+<button (click)="addItem(inputValue.value)">Add</button>
+<button (click)="removeItem(inputValue.value)">Add</button>

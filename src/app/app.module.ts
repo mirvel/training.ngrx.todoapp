@@ -6,9 +6,12 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './counter.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+import { itemReducer } from './item.reducer';
 
-
+export const environment = {
+  production: false,
+  enableDevTools: true,
+};
 
 @NgModule({
   declarations: [
@@ -17,8 +20,8 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ count: counterReducer }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreModule.forRoot({ count: counterReducer, items: itemReducer }),
+    environment.enableDevTools ? StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }) : []
   ],
   providers: [],
   bootstrap: [AppComponent]
