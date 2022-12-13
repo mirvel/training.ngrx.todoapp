@@ -1,7 +1,7 @@
 import { state } from '@angular/animations';
 import { EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
-import * as ItemActions from '@app/actions/item.actions';
+import * as ItemActions from 'actions/item.actions';
 import { Todo } from 'src/app/models/item.model';
 import { itemAdapter } from 'src/app/adapters/item.adapter';
 
