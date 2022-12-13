@@ -8,6 +8,7 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import * as ToDoActions from 'actions/item.actions';
 
@@ -18,19 +19,19 @@ import * as ToDoActions from 'actions/item.actions';
 })
 export class NewTodoComponent implements OnInit, AfterViewInit {
   @ViewChild('inputTask') inputTaskElementRef!: ElementRef;
-  constructor() {}
+  constructor(private store: Store) { }
   @HostListener('document:keydown.enter', ['$event'])
   onKeyPress(event: KeyboardEvent) {
     console.log('Enter pressed');
     console.log(event.code);
-    ToDoActions.addItem({
+    this.store.dispatch(ToDoActions.addItem({
       item: {
         title: this.inputTaskElementRef.nativeElement.value,
         completed: false,
       },
-    });
+    }));
   }
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

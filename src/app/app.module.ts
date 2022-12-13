@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './counter.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { itemReducer } from './item.reducer';
+import { itemReducer } from 'reducers/item.reducer';
 import { LayoutComponent } from './layout/layout.component';
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -35,12 +35,12 @@ export const environment = {
     StoreModule.forRoot({ count: counterReducer, items: itemReducer }),
     environment.enableDevTools
       ? StoreDevtoolsModule.instrument({
-          maxAge: 25,
-          logOnly: environment.production,
-        })
+        maxAge: 25,
+        logOnly: environment.production,
+      })
       : [],
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

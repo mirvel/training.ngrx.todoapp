@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/internal/Observable';
 import { decrement, increment, reset } from './counter.actions';
-import { addItem, removeItem } from './item.actions';
+import { addItem, removeItem } from 'actions/item.actions';
 
 @Component({
   selector: 'app-root',

@@ -16,7 +16,7 @@ export const initialState: State = itemAdapter.getInitialState({
 export const itemReducer = createReducer(
   initialState,
   on(ItemActions.addItem, (state, { item }) => {
-    return itemAdapter.addOne(item, state);
+    return itemAdapter.addOne({ ...item, id: item.id ?? Math.floor(Math.random() * (300 - 200)) + 200 }, state);
   }),
   on(ItemActions.removeItem, (state, { id }) => {
     return itemAdapter.removeOne(id, state);
