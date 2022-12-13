@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './counter.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { itemReducer } from './item.reducer';
+import { LayoutComponent } from './layout/layout.component';
 
 export const environment = {
   production: false,
@@ -14,16 +15,19 @@ export const environment = {
 };
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, LayoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({ count: counterReducer, items: itemReducer }),
-    environment.enableDevTools ? StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }) : []
+    environment.enableDevTools
+      ? StoreDevtoolsModule.instrument({
+          maxAge: 25,
+          logOnly: environment.production,
+        })
+      : [],
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
